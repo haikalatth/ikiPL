@@ -5,7 +5,6 @@
  */
 package camera_rent;
 
-import javax.swing.JFrame;
 
 /**
  *
@@ -13,6 +12,7 @@ import javax.swing.JFrame;
  */
 public class Dashboard extends javax.swing.JFrame {
 int row;
+int total;
     /**
      * Creates new form Dashboard
      */
@@ -20,7 +20,6 @@ int row;
         initComponents();
         LoadData ld = new LoadData();
         ld.loadKamera(tb_kamera);
-        ld.loadAksesoris(tb_aksesoris);
     }
 
     /**
@@ -32,18 +31,16 @@ int row;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tb_kamera = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_aksesoris = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tb_keranjang = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         bt_cancel = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_kamera = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        total_harga = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(657, 504));
@@ -53,6 +50,52 @@ int row;
             }
         });
         getContentPane().setLayout(null);
+
+        tb_keranjang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Kode", "Nama Barang", "Harga", "Jumlah", "Total"
+            }
+        ));
+        jScrollPane3.setViewportView(tb_keranjang);
+        if (tb_keranjang.getColumnModel().getColumnCount() > 0) {
+            tb_keranjang.getColumnModel().getColumn(0).setMinWidth(2);
+            tb_keranjang.getColumnModel().getColumn(0).setPreferredWidth(2);
+            tb_keranjang.getColumnModel().getColumn(0).setMaxWidth(2);
+        }
+
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(10, 320, 490, 150);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Keranjang :");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 290, 110, 30);
+
+        bt_cancel.setText("Cancel");
+        bt_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cancelMouseClicked(evt);
+            }
+        });
+        getContentPane().add(bt_cancel);
+        bt_cancel.setBounds(530, 320, 120, 30);
+
+        jButton4.setText("BAYAR");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(530, 440, 120, 30);
 
         tb_kamera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,82 +112,27 @@ int row;
         });
         jScrollPane2.setViewportView(tb_kamera);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-        );
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(10, 50, 660, 230);
 
-        jTabbedPane1.addTab("Kamera", jPanel1);
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("KAMERAKU");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 10, 670, 29);
 
-        tb_aksesoris.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        total_harga.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        total_harga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        total_harga.setText("0");
+        getContentPane().add(total_harga);
+        total_harga.setBounds(530, 400, 120, 20);
 
-            },
-            new String [] {
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Total Harga");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(530, 360, 120, 20);
 
-            }
-        ));
-        jScrollPane1.setViewportView(tb_aksesoris);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Aksesoris", jPanel2);
-
-        getContentPane().add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, 0, 660, 290);
-
-        tb_keranjang.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Kode", "Nama Barang", "Harga"
-            }
-        ));
-        jScrollPane3.setViewportView(tb_keranjang);
-        if (tb_keranjang.getColumnModel().getColumnCount() > 0) {
-            tb_keranjang.getColumnModel().getColumn(0).setMinWidth(2);
-            tb_keranjang.getColumnModel().getColumn(0).setPreferredWidth(2);
-            tb_keranjang.getColumnModel().getColumn(0).setMaxWidth(2);
-        }
-
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(0, 320, 500, 180);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Keranjang :");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 290, 110, 30);
-
-        bt_cancel.setText("Cancel");
-        bt_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bt_cancelMouseClicked(evt);
-            }
-        });
-        getContentPane().add(bt_cancel);
-        bt_cancel.setBounds(530, 460, 120, 30);
-
-        jButton4.setText("Selanjutnya");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(530, 400, 120, 40);
-
-        setSize(new java.awt.Dimension(680, 544));
+        setSize(new java.awt.Dimension(680, 521));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,18 +141,35 @@ int row;
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_formWindowOpened
 
-    private void tb_kameraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_kameraMouseClicked
-        row = tb_kamera.getSelectedRow();
-        MasukKeranjang mk = new MasukKeranjang();
-        mk.tambahitem(tb_kamera,tb_keranjang,row);
-    }//GEN-LAST:event_tb_kameraMouseClicked
-
     private void bt_cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cancelMouseClicked
         int b = tb_keranjang.getSelectedRow();
         Cancel ca = new Cancel();
-        ca.batal(tb_keranjang,tb_kamera,tb_aksesoris,b);
+        ca.batal(tb_keranjang,tb_kamera,b);
+        int harga = ca.total;
+        total = total-harga;
+        total_harga.setText(Integer.toString(total));
         //ca.stok(tb_kamera,row);
     }//GEN-LAST:event_bt_cancelMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        new Pembayaran(total).setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void tb_kameraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_kameraMouseClicked
+        row = tb_kamera.getSelectedRow();
+        MasukKeranjang mk = new MasukKeranjang();
+        mk.tambahKeranjang(tb_kamera,tb_keranjang,row, total_harga);
+        int harga = mk.total;
+        total = total+harga;
+        total_harga.setText(Integer.toString(total));
+    }//GEN-LAST:event_tb_kameraMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,14 +211,12 @@ int row;
     private javax.swing.JButton bt_cancel;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tb_aksesoris;
     private javax.swing.JTable tb_kamera;
     private javax.swing.JTable tb_keranjang;
+    private javax.swing.JLabel total_harga;
     // End of variables declaration//GEN-END:variables
 }

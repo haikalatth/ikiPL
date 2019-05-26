@@ -43,25 +43,4 @@ public class LoadData {
             
         }
     }
-    public void loadAksesoris(JTable tb_aksesoris) {
-        file = new File("src/camera_rent/aksesoris.txt");
-        try{
-            br = new BufferedReader(new FileReader(file));
-            String barispertama = br.readLine();
-            String[] namaKolom = barispertama.split(",");
-            model = (DefaultTableModel)tb_aksesoris.getModel();
-            model.setColumnIdentifiers(namaKolom);
-            
-            Object[] dataBaris = br.lines().toArray();
-            for(int i=0;i<dataBaris.length;i++){
-                String baris = dataBaris[i].toString();
-                String[] data = baris.split("/");
-                
-                model.addRow(data);
-            }
-            
-        }catch(Exception e){
-            
-        }
-    }
 }
